@@ -12,16 +12,14 @@
 window.addEventListener('load', event => {
 
 
-const header = document.querySelector('.header-container');
-
 function Header(data) {
     
-    const header = document.createElement('div');
+    const header = document.createElement('.header-container');
     const date = document.createElement('span');
     const title = document.createElement('h1');
     const temp = document.createElement('span');
-
-    header.classList.add('header-container');
+    
+    header.classList.add('header');
     date.classList.add('date');
     title.classList.add('title');
     temp.classList.add('temp');
