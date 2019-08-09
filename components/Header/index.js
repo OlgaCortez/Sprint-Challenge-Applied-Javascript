@@ -11,14 +11,15 @@
 
 window.addEventListener('load', event => {
 
+const header = document.querySelector('.header-container');
 
-function Header(data) {
+function createHeader(data) {
     
-    const header = document.createElement('.header-container');
+    const header = document.createElement('div');
     const date = document.createElement('span');
     const title = document.createElement('h1');
     const temp = document.createElement('span');
-    
+
     header.classList.add('header');
     date.classList.add('date');
     title.classList.add('title');
@@ -28,13 +29,13 @@ function Header(data) {
     title.textContent = data.title;
     temp.textContent = data.temp;
 
-    header.appendChild(date);
-    header.appendChild(title);
-    header.appendChild(temp);
+    createHeader.appendChild(date);
+    createHeader.appendChild(title);
+    createHeaderr.appendChild(temp);
 
     return header;
 
 
 }
 
-})
+});
