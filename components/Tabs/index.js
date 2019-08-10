@@ -11,9 +11,8 @@
 
 function onLoad(){
     axios.get('https://lambda-times-backend.herokuapp.com/topics')
-        
-        .then(res => {
-          Object.keys(res.data.topics).forEach(category =>{
+        .then(res => {  
+          object.keys(res.data.topics).forEach(category =>{
             res.data.topics[category].forEach(topic =>{
               createTab(topic)
             })
@@ -22,26 +21,27 @@ function onLoad(){
         .catch(err => console.log("Hi from Chicago"));   
   }
 
-function createTab(data){
-    console.log(data)
-    let parent = document.querySelector(".tabs")
+// function createTab(obj){
+//     console.log(data)
+//     let parent = document.querySelector(".tabs")
 
-    const tab = document.createElement('div');
-    tab.classList.add(tab);
-    parent.appendChild(tab)
+//     //Tab
+//     let tab = document.createElement('div');
+//     tab.classList.add(tab);
+//     parent.appendChild(tab)
 
-    // const topics = document.createElement('div');
-    // topics.classList.add(topics);
-    // topics.textContent = data.topics;
-    // tabs.appendChild(topics)
+//     //Topics
+//     let topics = document.createElement('div');
+//     topics.setAttribute('src', obj.topics);
+//     topics.classList.add(topics);
+//     tab.appendChild(topics)
 
-    // const spanTag = document.createElement('span');
-    // spanTag.textContent = data.topic;
-    // tabs.appendChild(spanTag)
+//     //Title
+//     let spanTag = document.createElement('span');
+//     spanTag.textContent = data.topic;
+//     tab.appendChild(spanTag)
 
 
-    // return tabs;
-
-}
+// }
 
 onLoad()
