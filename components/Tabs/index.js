@@ -9,32 +9,39 @@
 //    <div class="tab">topic here</div>
 
 
-window.addEventListener('load', event => {
+function onLoad(){
+    axios.get('https://lambda-times-backend.herokuapp.com/topics')
+        
+        .then(res => {
+          Object.keys(res.data.topics).forEach(category =>{
+            res.data.topics[category].forEach(topic =>{
+              createTab(topic)
+            })
+          })
+        })
+        .catch(err => console.log("Hi from Chicago"));   
+  }
 
-axios.get('https://lambda-times-backend.herokuapp.com/topics')
-.then(data => {
-    console.log('response', data);
-});
+function createTab(data){
+    console.log(data)
+    let parent = document.querySelector(".tabs")
 
-const tabs = document.querySelector('.tabs');
+    const tab = document.createElement('div');
+    tab.classList.add(tab);
+    parent.appendChild(tab)
 
-function createTabs(data){
-    const tabs = document.createElement('div');
-    const topics = document.createElement('div');
-    const title = document.createElement('span');
+    // const topics = document.createElement('div');
+    // topics.classList.add(topics);
+    // topics.textContent = data.topics;
+    // tabs.appendChild(topics)
 
-    tabs.classList.add(tabs);
-    topics.classList.add(topics);
-    title.classList.add(title);
+    // const spanTag = document.createElement('span');
+    // spanTag.textContent = data.topic;
+    // tabs.appendChild(spanTag)
 
-    topics.textContent = data.topics;
-    title.textContent = data.title;
 
-    createTabs.appendChild(topics);
-    createTabs.appendChild(title);
-
-    return tabs;
+    // return tabs;
 
 }
 
-});
+onLoad()
