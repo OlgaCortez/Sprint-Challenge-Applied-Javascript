@@ -9,39 +9,27 @@
 //    <div class="tab">topic here</div>
 
 
-function onLoad(){
-    axios.get('https://lambda-times-backend.herokuapp.com/topics')
-        .then(res => {  
-          object.keys(res.data.topics).forEach(category =>{
-            res.data.topics[category].forEach(topic =>{
-              createTab(topic)
-            })
-          })
-        })
-        .catch(err => console.log("Hi from Chicago"));   
-  }
+axios.get("https://lambda-times-backend.herokuapp.com/topics")
+ .then( (response) => {
+   console.log(response)  
+       response.data.topics.forEach( data => {
+       const newTopic = Topic(data)
+       addingToDomTwo.appendChild(newTopic)
+   })
+ })
+ .catch( (err) => {
+   console.log(err)
+ })
 
-// function createTab(obj){
-//     console.log(data)
-//     let parent = document.querySelector(".tabs")
+ function Topic (data) {
+   const Topic = document.createElement("div")
 
-//     //Tab
-//     let tab = document.createElement('div');
-//     tab.classList.add(tab);
-//     parent.appendChild(tab)
+   Topic.classList.add("tab")
 
-//     //Topics
-//     let topics = document.createElement('div');
-//     topics.setAttribute('src', obj.topics);
-//     topics.classList.add(topics);
-//     tab.appendChild(topics)
+   Topic.textContent = data
+   
+   return Topic;
+ }
 
-//     //Title
-//     let spanTag = document.createElement('span');
-//     spanTag.textContent = data.topic;
-//     tab.appendChild(spanTag)
-
-
-// }
-
-onLoad()
+ const addingToDomTwo = document.querySelector(".topics")
+ addingToDomTwo.appendChild(Topic())
